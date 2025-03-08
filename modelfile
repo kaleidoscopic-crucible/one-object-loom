@@ -1,0 +1,7 @@
+FROM PHI3:mini
+# Parameters
+PARAMETER temperature 1.0
+PARAMETER top_p 0.4
+PARAMETER top_k 30
+PARAMETER num_ctx 4096
+PARAMETER num_predict 2048
