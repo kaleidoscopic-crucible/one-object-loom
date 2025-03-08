@@ -9,6 +9,7 @@ Inspired by slimepriestess telling us about [Command Loom Interface](https://git
 ## Usage
      Clone this repository and  then do
 ```
+ollama pull Phi3:mini # optional, if you don't already have this model downloaded
 ollama create loomphi
 python ool.py
 ```
