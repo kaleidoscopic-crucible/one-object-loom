@@ -1,6 +1,6 @@
 # one-object-loom
 ## A single-branch auto-itterating text generator using phi3:mini and ollama
-Inspired by slimepriestess telling us about [Command Loom Interface](https://github.com/socketteer/clooi), this project implements a single-branch auto-itterative text generator in Python3.
+Inspired by [slimepriestess](https://nitter.net/slimepriestess) telling us about [Command Loom Interface](https://github.com/socketteer/clooi), this project implements a single-branch auto-itterative text generator in Python3.
 ## Requirements:
 * [Ollama](https://ollama.com/) installed
 * The python bindings for ollama (`pip3 install ollama`) installed.
