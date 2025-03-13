@@ -1,9 +1,7 @@
 """
-Loom Chat Session Logger
+One-object loom
 
-This script handles the setup of a chat session with a model, logs the conversation to a session-
-specific log file, and allows the user to interactively modify the messages exchanged with the
-model.
+This script is a single-branch auto-itterative text generation utility using the Phy3:mini large language model
 """
 
 import logging
