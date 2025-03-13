@@ -1,7 +1,8 @@
 """
 One-object loom
 
-This script is a single-branch auto-itterative text generation utility using the Phy3:mini large language model
+This script is a single-branch auto-itterative text generation utility using the Phy3:mini
+large language model
 """
 
 import logging
