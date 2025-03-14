@@ -7,6 +7,8 @@ large language model
 
 import logging
 import sys
+import time
+import random
 from ollama import chat  # Removed unused ChatResponse import
 
 # Ask for a session name
@@ -22,6 +24,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(message)s'
 )
+
 # Define system and user messages
 SYSTEM_MESSAGE = {
     'role': 'system',
@@ -38,9 +41,9 @@ USER_MESSAGE = {
         'loom spindle in the club, you won’t be paperclippin, if your melodies are remedies call '
         'that my religion. quantum leapin secret keepin future’s reapin what I’m sewin, beats i’m '
         'weavin foe defeatin rhymes are supersymmetry a-flowin, '
-'oscillatin, never waitin, heart’s a Fourier transform, tesseractin, '
+        'oscillatin, never waitin, heart’s a Fourier transform, tesseractin, '
         'timeless actin, catch me surfin on that waveform. '
-'Hilbert space in your face, my lyrics are '
+        'Hilbert space in your face, my lyrics are '
         'orthogonal, spittin fire raise it higher, my flow’s a phase transition make it formal '
         'attractor strange? my range is infinite call me a Cantor set, damn that’s a bet.'
     )
@@ -70,6 +73,18 @@ response = chat(model=USE_MODEL, messages=[SYSTEM_MESSAGE, USER_MESSAGE])
 INITIAL_TEXT = f'{CONTINUATION_PHRASE} {response["message"]["content"]}'
 
 ITER = 0
+PREVIOUS_TEXT = ""  # Store the previous response
+
+# List of dynamic variation phrases
+variation_phrases = [
+    "Can you simplify this?", 
+    "Restate this in a way that a 5-year-old can understand.", 
+    "Keep going...", 
+    "And then what happened?", 
+    "Who is that?", 
+    "What happened next?"
+]
+
 try:
     while True:
         print("Weaving...")
@@ -80,6 +95,20 @@ try:
         else:
             print("Error: initial_text is not a string!")
             break
+
+        # Check if the current response is the same as the previous one
+        if INITIAL_TEXT == PREVIOUS_TEXT:
+            print("Repeating detected, modifying input and retrying...")
+
+            # Select a random variation phrase from the list
+            random_variation = random.choice(variation_phrases)
+            # Modify the prompt with the randomly chosen variation phrase
+            INITIAL_TEXT_WITH_PROMPT = f"{random_variation} {INITIAL_TEXT}"
+
+            time.sleep(1)  # Add delay to avoid hammering the model too quickly
+        else:
+            PREVIOUS_TEXT = INITIAL_TEXT  # Update PREVIOUS_TEXT with the new response
+
         # Send the modified text to the model
         response = chat(model=USE_MODEL,
         messages=[{'role': 'user', 'content': INITIAL_TEXT_WITH_PROMPT}])
