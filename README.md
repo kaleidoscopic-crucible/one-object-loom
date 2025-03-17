@@ -19,5 +19,4 @@ You will be prompted to set several parameters before the process starts, includ
 
 ## Credits go to:
 * Slimepriestess - for the initial idea of looms, as well as the song lyrics that comprise the initial user message
-* Rozaya (CommunityBelonging) for contributions regarding the "continuation phrase feature"
-  
+* Rozaya (CommunityBelonging) for contributions regarding the "continuation phrase" feature, as well as for code contributions to a feature to attempt to avert looping.
